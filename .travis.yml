@@ -1,0 +1,31 @@
+sudo: false
+language: node_js
+branches:
+  only:
+  - master
+  - /^v\d+\.\d+\.\d+$/
+stages:
+  - test
+  - deploy
+jobs:
+  include:
+    - stage: test
+      node_js: 8
+      before_script: npm install coveralls
+      script: ./scripts/test.bash :coverage
+      after_script: nyc report --reporter=text-lcov | coveralls
+    - stage: test
+      node_js: 6
+      script: ./scripts/test.bash :unit --require @babel/register
+    - stage: deploy
+      node_js: 8
+      script: ./scripts/build.bash
+      deploy:
+        provider: npm
+        email: mitmaro@gmail.com
+        skip_cleanup: true
+        api_key:
+          secure: ntbqxUVaBO/X3Vw4sx9xO9oXLYpRXbPRXjG5s0lluc/5tArrvgyR0NTkQPYFYSGCB79+3SR4Ev0cLmziJLgeQ28IR50CzdE/3VVVBYPL8XI18RjLjY55Q1V35vYrAsIVwVJIRO60Rw3A4vcTVWf/QGM23K+hib18VdMRnvMUvbhKOPPBDdq/6no8Tjgoa2xbJb0Tw7FOOsGhxI35UT6asnNFGmclOS5LlzaIOsAlVsvXLpmTrJHpBh42mTIpFjCiiBRF3fKMYwcbSEi+uegtFpy57b049gWCwepYStB+qjl2dyrnJwRfdTErz1bLFVt55qgmNYQNFhzvWx0nO+F6Tydka8qbnq2IdvN39JlnucTna0O1PzRxcNVSqJC4nmEMke0idbsr1QCaEPo4LxRJVtEFx0wcmFDQD+DhOcoRXlqA/jh5eHRU456WvyI8uowkZg1DBR+h2eoo/hMZuECsYlSW4bkK+kpYCWrnCNDZkAdJJ6nPQvYGiFPDcUvifX1DvZmaSE3bkVrq0IRCZWPpskigXTg/pRmCKwM91NBE7M3moalNkmIh+QNUwa+LBFM53XQul4gIPFjmicKbMhnqSufjES0vOJLdHgwRTMWgSJ80G0tu5gOHXipbuE6tvAttlD0v7j84Ca734EoaFA5gvrmKXSIcaaV71j2xNHcwSMw=
+        on:
+          tags: true
+          repo: MitMaro/node-errors
