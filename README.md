@@ -20,4 +20,4 @@ This project is released under the ISC license. See [LICENSE](LICENSE.md).
 
 
 [8]: https://github.com/visionmedia/debug
-[1]: http://www.mitmaro.ca/node-server-shutdown/
+[1]: http://www.mitmaro.ca/node-errors/
