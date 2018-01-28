@@ -5,6 +5,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/MitMaro/node-errors/badge.svg?branch=master)](https://coveralls.io/github/MitMaro/node-errors?branch=master)
 [![NPM version](https://img.shields.io/npm/v/@mitmaro/errors.svg)](https://www.npmjs.com/package/@mitmaro/errors)
 [![GitHub license](https://img.shields.io/badge/license-ISC-blue.svg)](https://raw.githubusercontent.com/MitMaro/node-errors/master/LICENSE.md)
+[![Known Vulnerabilities](https://snyk.io/test/github/mitmaro/node-errors/badge.svg?targetFile=package.json)](https://snyk.io/test/github/mitmaro/node-errors?targetFile=package.json)
 
 ## Install
 
