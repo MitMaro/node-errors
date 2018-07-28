@@ -1,7 +1,8 @@
-'use strict';
+import {expect} from 'chai';
+import * as sinon from 'sinon';
+import unhandledErrorHandlerFactory from '../../src/unhandled-error-handler';
 
-const sinon = require('sinon');
-const unhandledErrorHandler = require('../../src/unhandled-error-handler')();
+const unhandledErrorHandler = unhandledErrorHandlerFactory();
 
 describe('base-error BaseError', function () {
 	it('should log an error', async function () {

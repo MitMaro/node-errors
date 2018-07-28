@@ -2,14 +2,18 @@
 
 cd "$(dirname "${BASH_SOURCE[0]}")" && source "./common.bash"
 
+rm -rf "docs/"
 ensure-directory "docs/"
 
 typedoc \
-	--name "API Documentation" \
-	--includeDeclarations \
+	--name "Node Errors" \
+	--module "commonjs" \
+	--ignoreCompilerErrors \
+	--mode file \
 	--target "ES6" \
 	--theme minimal \
 	--excludeExternals \
+	--excludePrivate \
+	--exclude "test/**/*.ts" \
 	--out "docs/" \
-	--mode file \
 	src/
