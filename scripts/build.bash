@@ -2,8 +2,7 @@
 
 cd "$(dirname "${BASH_SOURCE[0]}")" && source "./common.bash"
 
-babel src/ -d lib/
+rm -rf "./lib/"
+rm -rf "./types/"
 
-cp src/errors.d.ts lib/
-
-ls -la lib/
+tsc -p tsconfig-build.json "$@"
